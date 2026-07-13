@@ -31,7 +31,7 @@ try:
     assets_loaded = True
 except Exception as e:
     
-    st.warning(f"⚠️ Error loading assets: {e}")
+    st.warning(f" Error loading assets: {e}")
     assets_loaded = False
 
 # Calculate cyclical time features for the model

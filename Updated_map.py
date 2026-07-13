@@ -30,7 +30,8 @@ try:
     model, scaler = load_assets()
     assets_loaded = True
 except Exception as e:
-    st.warning("Model or Scaler files not found. Please run 'eda_uber.py' first.")
+    
+    st.warning(f"⚠️ Error loading assets: {e}")
     assets_loaded = False
 
 # Calculate cyclical time features for the model

@@ -6,17 +6,24 @@ import pandas as pd
 import numpy as np
 import joblib
 from datetime import datetime
+import os
 
 from database import PredictionLogger
 
-st.title("Uber Price Predictor ")
+st.title("Uber Price Predictor")
 db_logger = PredictionLogger()
 
-# Load trained ML model and scaler
+# Load trained ML model and scaler using absolute path resolution
 @st.cache_resource
 def load_assets():
-    model = joblib.load('uber_xgb_model.pkl')
-    scaler = joblib.load('coordinates_scaler.pkl')
+    # Get the absolute path of the directory containing this script
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    model_path = os.path.join(base_dir, 'uber_xgb_model.pkl')
+    scaler_path = os.path.join(base_dir, 'coordinates_scaler.pkl')
+    
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
     return model, scaler
 
 try:

@@ -7,7 +7,6 @@ class PredictionLogger:
         self._init_db()
         
     def _init_db(self):
-        """إنشاء الجدول لو مش موجود عند تشغيل البرنامج أول مرة"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         cursor.execute("""
@@ -26,7 +25,6 @@ class PredictionLogger:
         conn.close()
 
     def log_request(self, p_lat, p_lon, d_lat, d_lon, distance, fare):
-        """دالة مخصصة لإدخال البيانات وحفظها"""
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         cursor.execute("""
